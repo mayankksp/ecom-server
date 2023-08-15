@@ -25,7 +25,6 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  console.log(req.body);
   const { email, password } = req.body;
 
   try {
@@ -33,7 +32,6 @@ exports.login = async (req, res) => {
     if (!user) {
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
-    console.log(user);
 
     // Check password
     const isMatch = bcrypt.compare(password, user.password);
@@ -66,3 +64,7 @@ exports.logout = (req, res) => {
   // Invalidate the token
   res.json({ msg: "Logged out" });
 };
+
+exports.checkLoggedIn = (req, res) => {
+  res.json({ loggedIn: true });
+}

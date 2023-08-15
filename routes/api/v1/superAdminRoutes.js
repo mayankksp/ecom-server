@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const isSuperAdmin = require('../../../middlewares/isSuperAdmin');
-const { createAdmin, createRole, createPermission, getAdmins, getRoles, getPermissions, assignRole, assignPermission, updateAdmin, updateRole, updatePermission, deleteAdmin, deleteRole, deletePermission } = require('../../../controllers/api/v1/superAdminController');
+const { checkSuperAdmin, createAdmin, createRole, createPermission, getAdmins, getRoles, getPermissions, assignRole, assignPermission, updateAdmin, updateRole, updatePermission, deleteAdmin, deleteRole, deletePermission } = require('../../../controllers/api/v1/superAdminController');
 const auth = require('../../../middlewares/auth');
 
 router.use(auth);
