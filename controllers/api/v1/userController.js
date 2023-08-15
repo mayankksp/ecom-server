@@ -10,7 +10,7 @@ exports.register = async (req, res) => {
     if (user) {
       return res.status(400).json({ msg: 'User already exists' });
     }
-    const hashedPassword = bcrypt.hash(password, process.env.SALT_ROUNDS);
+    const hashedPassword = await bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS));
 
     // create a new student
     user = new User({ name, email, password: hashedPassword });

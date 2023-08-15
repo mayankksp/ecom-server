@@ -11,11 +11,30 @@ const UserSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    username: String,
-    password: String,
-    email: String,
-    emailVerified: Boolean,
-    roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    emailVerified: {
+        type: Boolean,
+        default: false
+    },
+    role: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Role'
+    },
     isSuperAdmin: {
         type: Boolean,
         default: false
